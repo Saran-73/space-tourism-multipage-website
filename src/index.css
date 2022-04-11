@@ -8,7 +8,7 @@
   --clr-white: 0 0% 100%;
 
     /* font-sizes */
-    /* px is converted to rem  for accessiblity reasons */
+    /* use rem  for accessiblity reasons */
     --fs-900: 9.375rem;
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
@@ -82,7 +82,7 @@ input,button,textarea,select{
 
 /* ---------------*/
 /*-----Utility classes-------*/
-/* (i.e creating classes that perform only one proper action) */ 
+/* (i.e creating classes that provide only one proper style) */ 
 /* often with only one declartion but multiple when needed */
 /* helps to write less in long run */
 /* -------------- */
@@ -96,6 +96,11 @@ input,button,textarea,select{
   display:grid;
   gap:var(--gap,1rem);
 }
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
 .container{
   /* setting only right and left side (new css feature instead on padding :0 2em) */
   padding-inline:2em;
@@ -150,3 +155,118 @@ input,button,textarea,select{
 .fs-600 {
     line-height: 1.1;
 }
+.numbered-title {
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-500);
+  text-transform: uppercase;
+  letter-spacing: 4.72px; 
+}
+
+.numbered-title span {
+  margin-right: .5em;
+  font-weight: 700;
+  color: hsl( var(--clr-white) / .25);
+}
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
+
+.large-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  z-index: 1;
+  padding: 0 2em;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.large-button::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: hsl( var(--clr-white) / .15);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
+} 
+
+.large-button:hover::after,
+.large-button:focus::after {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.primary-navigation {
+  --gap: 8rem;
+  --underline-gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-navigation a {
+  text-decoration: none;
+}
+
+.primary-navigation a > span {
+  font-weight: 700;
+  margin-right: .5em;
+}
+
+.underline-indicators > * {
+  padding: var(--underline-gap, 1rem) 0;
+  border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+  border-color: hsl( var(--clr-white) / .5);
+}
+
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+    color: hsl( var(--clr-white) / 1);
+    border-color: hsl( var(--clr-white) / 1);
+}
+
+.tab-list {
+    --gap: 2rem;
+}
+
+.dot-indicators > * {
+  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  padding: .5em;
+  background-color: hsl( var(--clr-white) / .25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
+  background-color: hsl( var(--clr-white) / .5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+  background-color: hsl( var(--clr-white) / 1); 
+}
+
+.number-indicators > * {
+  cursor:pointer;
+  width:5rem;
+  height:5rem;
+  border-radius:50%;
+  color:hsl( var(--clr-white));    
+  border:0.1em solid hsl( var(--clr-white) /.25);
+}
+.number-indicators > *:hover,
+.number-indicators > *:focus{
+border:0.1em solid hsl( var(--clr-white) /.7);
+}
+.number-indicators > [aria-selected="true"] {
+background-color:hsl( var(--clr-white));
+color:hsl( var(--clr-dark));
+} 
