@@ -177,7 +177,7 @@ input,button,textarea,select{
   place-items: center;
   aspect-ratio: 1;
   z-index: 1;
-  padding: 0 2em;
+  padding: 0 2rem;
   border-radius: 50%;
   text-decoration: none;
 }
@@ -269,4 +269,5 @@ border:0.1em solid hsl( var(--clr-white) /.7);
 .number-indicators > [aria-selected="true"] {
 background-color:hsl( var(--clr-white));
 color:hsl( var(--clr-dark));
-} 
+}
+

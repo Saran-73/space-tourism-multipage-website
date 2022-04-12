@@ -1,0 +1,46 @@
+
+.home--layout{
+    text-align:center;
+}
+.home--layout > div{
+margin-top:1em;
+width:320px;
+margin-inline:auto;
+border:1px solid red;
+}
+header > div {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    border:1px solid red;
+    margin:1em;
+}
+.btn{
+    margin-top:3em;
+    margin-inline:auto;
+    width:fit-content;
+  }
+  .mobile--menu{
+  position:absolute;
+  right:0;
+  border:1px solid red;
+  height:110%;
+  width:50%;
+  z-index:2;
+  background-color: rgba(10, 10, 10, 0.9);
+  margin-top:-3.8em;  
+  display:grid;
+ grid-template-rows:3em 1fr;
+ grid-template-columns:1fr;
+  }
+  .mobile--menu nav{
+    border:1px solid blue;
+    margin-inline:auto;
+  }
+  .mobile--menu img{
+    border:1px solid blue;
+    display:block;
+    justify-self:end;
+    width:1.5em;
+  }
+  
