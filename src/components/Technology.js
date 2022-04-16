@@ -14,12 +14,13 @@ const choose=(techUsed)=>{
 }
     return (
         <section className="flex">
+            
             <div>
             <h2>03 space launch 101</h2>
             <img src={images.portrait}/>
             </div>
-            <div>
-                
+
+            <div>    
             <div className="grid">
         {technology.map((obj,i)=> <button key={i} onClick={()=>choose(obj.name)}>{i+1}</button>)}
                     
@@ -27,8 +28,8 @@ const choose=(techUsed)=>{
             <p>The terminology...</p>
              <h1>{name}</h1>
              <p>{description}</p>
-
             </div>
+
         </section>
     )
 }

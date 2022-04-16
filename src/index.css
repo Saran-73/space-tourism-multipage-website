@@ -8,8 +8,7 @@
   --clr-white: 0 0% 100%;
 
     /* font-sizes */
-    /* use rem  for accessiblity reasons */
-    --fs-900: 9.375rem;
+    --fs-900: clamp(5rem, 9vw + 1rem, 9.375rem);
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
     --fs-600: 2rem;
@@ -24,6 +23,25 @@
     --ff-sans-normal: "Barlow", sans-serif;
 }
 
+/* setting font size for tablet */
+@media (min-width: 35em) {
+  :root {
+      --fs-800: 5rem;
+      --fs-700: 2.5rem;
+      --fs-600: 1.5rem;
+      --fs-400: 1rem;
+  }
+}
+/* font size for larger than tablet */
+@media (min-width: 45em) {
+  :root {
+      /* font-sizes */
+      --fs-800: 6.25rem;
+      --fs-700: 3.5rem;
+      --fs-600: 2rem;
+      --fs-400: 1.125rem;
+  }
+}
 /* ---------------*/
 /* Reset          */
 /* -------------- */
@@ -57,6 +75,14 @@ body{
   font-size:var(--fs-400);
   color: hsl( var(--clr-white) );
   background-color: hsl( var(--clr-dark) );
+  overflow-x: hidden;
+  margin:0;
+}
+/* to strech the working space to fill the height */
+.app{
+  min-height:100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
 }
 
 /* to make images easier to work with  */
@@ -89,12 +115,46 @@ input,button,textarea,select{
 .flex{
   display:flex;
   gap:var(--gap,1rem);
-  background-color:rgb(81, 72, 73);
-
 }
 .grid{
   display:grid;
   gap:var(--gap,1rem);
+}
+.d-block {
+  display: block;
+}
+.grid-container {
+  display: grid;
+  text-align: center;
+  place-items: center;
+  padding-inline:1rem;
+}
+/* .grid-container > *:last-child {
+    margin-top:3em;
+}  */
+
+.grid-container * {
+  max-width: 50ch;
+}
+.grid-container--home{
+  align-items:end;
+  padding-bottom: max(6rem, 20vh);
+}
+
+@media (min-width:45rem){
+.grid-container {
+  display: grid;
+  column-gap: var(--container-gap, 2rem);
+  grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(1rem,1fr);
+  /* minmax(2rem, 1fr) is used to center the content */
+}
+ .grid-container > *:first-child {
+  grid-column: 2;
+}
+.grid-container > *:last-child {
+  grid-column: 3;
+  /* margin-top:0; */
+} 
 }
 
 .flow > *:where(:not(:first-child)) {
@@ -118,6 +178,19 @@ input,button,textarea,select{
   clip: rect(0, 0, 0, 0);
   white-space: nowrap; /* added line */
   border: 0;
+}
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  background: hsl( var(--clr-white) );
+  color: hsl( var(--clr-dark) );
+  padding: .5em 1em;
+  margin-inline: auto;  
+  transform:translateY(-100%);
+}
+.skip-to-content:focus {
+  transform:translateY(0);
+  transition:transform 240ms ease-in;
 }
 /* colors */
 .bg-dark{background-color:hsl( var(--clr-dark) );}
@@ -172,14 +245,15 @@ input,button,textarea,select{
 /* ------------------- */
 
 .large-button {
+  font-size: 2rem;
   position: relative;
-  display: grid;
+  display: inline-grid;
   place-items: center;
   aspect-ratio: 1;
   z-index: 1;
   padding: 0 2rem;
   border-radius: 50%;
-  text-decoration: none;
+  border:0;
 }
 
 .large-button::after {
@@ -199,38 +273,128 @@ input,button,textarea,select{
   opacity: 1;
   transform: scale(1.5);
 }
-
+.logo{
+  margin:1.5rem clamp(1.5rem , 5vw,3.5rem);
+}
+.primary-header{
+  justify-content: space-between;
+  align-items: center;
+}
 .primary-navigation {
-  --gap: 8rem;
+  --gap:clamp(1.5rem,5vw,3.5rem);
   --underline-gap: 2rem;
   list-style: none;
   padding: 0;
   margin: 0;
+  /* achieve glassmorphism effect */
+  /* setting default value  */
+  background: hsl( var(--clr-dark) / 0.95);
+  /* backdrop-filter: blur(1.5rem); */
 }
 
-.primary-navigation a {
+/* if browser support backdrop filter apply  the properties inside curly braces */
+@supports (backdrop-filter: blur(1rem)) {
+  .primary-navigation {
+      background: hsl( var(--clr-white) / 0.05);
+      backdrop-filter: blur(1.5rem);
+  }
+}
+.mobile-nav-btn{
+  display:none;
+}
+
+@media (max-width:35rem){
+.primary-navigation {
+  list-style: none;
+  margin: 0;
+  position:fixed;
+  inset:0 0 0 35%;
+  flex-direction:column;
+  z-index:1000;
+  padding:min(20rem,20vh) 2rem;
+  transform: translateX(100%); 
+   transition:transform 500ms ease-out;
+}
+/* when the attribute and its value is present in this way run the code block */
+.primary-navigation[data-visible="true"]{
+transform:translateX(0);
+transition:transform 500ms ease-in;
+}
+
+.primary-navigation li{
+  margin-bottom:0.5rem;
+}
+.mobile-nav-btn{
+ display: block;
+ position:absolute;
+ z-index:2000;
+ top:2rem;
+ right:1rem;
+ border:0;
+ background-color:transparent;
+ background-image:url("./shared/icon-hamburger.svg");
+ width:2rem;
+ aspect-ratio: 1;
+ background-repeat:no-repeat;
+ background-position: center;
+}
+.mobile-nav-btn[aria-expanded="true"]{
+  background-image:url("./shared/icon-close.svg");
+}
+}
+
+@media (min-width:35rem){
+.primary-navigation li {
   text-decoration: none;
 }
-
-.primary-navigation a > span {
+.primary-navigation li > span {
   font-weight: 700;
   margin-right: .5em;
 }
-
 .underline-indicators > * {
   padding: var(--underline-gap, 1rem) 0;
   border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
 }
-
 .underline-indicators > *:hover,
 .underline-indicators > *:focus {
   border-color: hsl( var(--clr-white) / .5);
 }
-
 .underline-indicators > .active,
 .underline-indicators > [aria-selected="true"] {
     color: hsl( var(--clr-white) / 1);
     border-color: hsl( var(--clr-white) / 1);
+}
+}
+/* tablet size */
+@media(min-width:35em){
+  .primary-navigation {
+    padding-inline: clamp(3rem, 10vw, 7rem);
+}
+}
+@media (min-width:35em) and (max-width:44.999em){
+.primary-navigation  span{
+  display: none;
+}
+}
+/* larger screen */
+@media(min-width:45em){
+  /* creating the line */
+  .primary-header::after {
+    content: '';
+    display: block;
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background: hsl( var(--clr-white) / .25);
+    order: 1;
+    margin-right:-2.5rem;
+}
+.nav-bar {
+   order: 2;
+}
+  .primary-navigation{
+    margin-block:2rem;
+}
 }
 
 .tab-list {
@@ -271,3 +435,25 @@ background-color:hsl( var(--clr-white));
 color:hsl( var(--clr-dark));
 }
 
+
+/* ------------ */
+/* page specific */
+/* ------------- */
+.app{
+  background-size:cover;
+  background-position:bottom center;
+}
+.app{
+  background-image:url("./home-images/background-home-mobile.jpg");
+}
+@media (min-width:35rem){
+  .app{
+    background-position:center;
+    background-image:url("./home-images/background-home-tablet.jpg");
+  }
+}
+@media (min-width:45rem){
+  .app{
+    background-image:url("./home-images/background-home-desktop.jpg");
+  }
+}
