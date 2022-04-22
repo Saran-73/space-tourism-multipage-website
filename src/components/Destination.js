@@ -12,30 +12,35 @@ const choose=(planet)=>{
         }))
 }
     return (
-        <section className="flex">
-            <div>
-            <h2>01 pick your destination</h2>
-            <img src={images.png}/>
-            </div>
-            <div>
-                <nav>
-                    <ul className="flex">
-                        {destinations.map((obj,i)=> <li key={i} onClick={()=>choose(obj.name)}>{obj.name}</li>)}
-                    </ul>
-                </nav>
-             <h1>{name}</h1>
-             <p>{description}</p>
-             <div>
-                 <p>avg. distance</p>
-                 <h3>{distance}</h3>
-             </div>
-             <div>
-                 <p>est. travel time</p>
-                 <h3>{travel}</h3>
-             </div>
+        <main id="main" className="grid-container  grid-container--destination flow">
+          
+            <h1 className="numbered-title"><span aria-hidden="true">01</span> pick your destination</h1>
+            <img src={images.png} alt={`the ${name} image`} />
+            
 
-            </div>
-        </section>
+      
+                <div className="tab-list underline-indicators flex ">
+                {destinations.map((obj,i)=> <button key={i} 
+                        onClick={()=>choose(obj.name)}
+                        aria-selected="false"
+                        className="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2">{obj.name}</button>)}
+                </div>
+
+          <article className='destination-info'>
+             <h2 className="fs-800 uppercase ff-serif">{name}</h2>
+             <p>{description}</p>
+             <div className="destination-meta flex">
+             <div>
+                 <h3 className="text-accent fs-200 uppercase">avg. distance</h3>
+                 <p  className="ff-serif uppercase">{distance}</p>
+             </div>
+             <div>
+                 <h3 className="text-accent fs-200 uppercase">est. travel time</h3>
+                 <p  className="ff-serif uppercase">{travel}</p>
+             </div>
+             </div>
+              </article>
+        </main>
     )
 }
 

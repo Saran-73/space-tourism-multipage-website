@@ -9,7 +9,7 @@ const App=()=>{
 
 const [info,setInfo]=useState(data)
 //display nav element which is true
-const [navigation,setNavigation]=useState([true,false,false,false])
+const [navigation,setNavigation]=useState([false,true,false,false])
 //clicked element will be true 
 const selectSlide=(id)=>{
   setNavigation(pre=>pre.map((x,i)=>id===i ? x=true : x=false))
@@ -17,8 +17,7 @@ const selectSlide=(id)=>{
 //store those boolean using destructring
 const [home,destination,crew,tech]=navigation;
 //create an array of nav text
-const navBar=["home"].concat(Object.keys(info))
-
+const navBar=["home","destinations","crew","technology"]
 
 // const selected=()=>{
 //   return  destination ? 'destination' : crew ? 'crew' : tech ? 'tech' :'home'
@@ -54,7 +53,7 @@ const [isNavOpen,setIsNavOpen]=useState(false)
 
   return (
     <div className="app">
-        <a class="skip-to-content" href="#main">Skip to content</a>
+        <a className="skip-to-content" href="#main">Skip to content</a>
       <header className="primary-header flex">
         
         <div>
