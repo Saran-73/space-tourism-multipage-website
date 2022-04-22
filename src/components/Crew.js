@@ -12,23 +12,26 @@ const choose=(member)=>{
         }))
 }
     return (
-        <section className="flex">
-            <div>
-            <h2>02 Meet your crew</h2>
-            <img src={images.png}/>
-            </div>
-            <div>
-                <nav>
-                    <ul className="flex">
-                        {crewData.map((obj,i)=> <li key={i} onClick={()=>choose(obj.name)}>{obj.name}</li>)}
-                    </ul>
-                </nav>
-             <h2>{role}</h2>
-             <h1>{name}</h1>
-             <p>{bio}</p>
+        <main id="main" className="grid-container  grid-container--crew flow">
+            
+            <h1 className="numbered-title uppercase"><span aria-hidden="true">02</span>
+            Meet your crew</h1>
 
-            </div>
-        </section>
+            <img src={images.png} alt={`image of ${name}`} />
+            
+                <div className="dot-indicators flex dot-tab">
+                        {crewData.map((obj,i)=> <button key={i} 
+                        onClick={()=>choose(obj.name)} 
+                        aria-selected="false"><span className='sr-only'>{obj.name}</span></button>)}
+                </div>
+
+            <article className='crew-info'>
+             <h2 className="fs-600 uppercase ff-serif">{role}</h2>
+             <p className="fs-700 uppercase ff-serif">{name}</p>
+             <p>{bio}</p>
+            </article>
+
+        </main>
     )
 }
 

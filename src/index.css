@@ -449,7 +449,8 @@ color:hsl( var(--clr-dark));
   padding-inline:1rem;
   padding-bottom:4rem;
 }
-.grid-container * {
+/* all p but not the one with class applied to it*/
+.grid-container p:not([class]) {
   max-width: 50ch;
 }
 .numbered-title{
@@ -531,8 +532,27 @@ justify-content:space-evenly;
   max-width:90%;
 }
 .destination-meta{
-  --gap:6rem;
+  --gap:min(8vw,6rem);
   justify-content:start;
     }
+}
 
+/* crew layout ---my soln*/
+.grid-container--crew{
+  --flow-space:2rem;
+grid-template-areas: 
+   'title'
+   'img'
+   'nav'
+   'content';
+}
+.grid-container--crew>img{
+  grid-area:img;
+  max-width:60%;
+}
+.grid-container--crew > .dot-tab{
+  grid-area:nav;
+}
+.grid-container--crew>.crew.grid-container--crew-info{
+  grid-area:content;
 }
