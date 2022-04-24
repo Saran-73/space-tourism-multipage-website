@@ -17,8 +17,6 @@ const choose=(planet)=>{
             <h1 className="numbered-title"><span aria-hidden="true">01</span> pick your destination</h1>
             <img src={images.png} alt={`the ${name} image`} />
             
-
-      
                 <div className="tab-list underline-indicators flex ">
                 {destinations.map((obj,i)=> <button key={i} 
                         onClick={()=>choose(obj.name)}

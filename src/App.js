@@ -1,9 +1,9 @@
-import React,{useState,useEffect} from "react"
+import React,{useState} from "react"
 import data from "./data.json"
 import Destination from "./components/Destination.js"
 import Crew from "./components/Crew.js"
 import Technology from "./components/Technology.js"
-// import Details from "./components/Details.js"
+
 
 const App=()=>{
 
@@ -76,7 +76,7 @@ const [isNavOpen,setIsNavOpen]=useState(false)
       </nav>
       </header>
 
-      {home && <main id="main" className="grid-container  grid-container--home">
+      {home ? <main id="main" className="grid-container  grid-container--home">
         <div>
         <h1 className="uppercase text-accent fs-500 ff-sans-cond letter-spacing-2 letter-spacing-1">
          So, you want to travel to <span  className="fs-900 ff-serif text-white d-block">Space</span></h1>
@@ -88,16 +88,11 @@ const [isNavOpen,setIsNavOpen]=useState(false)
          <button className="uppercase large-button ff-serif text-dark bg-white"  
          onClick={()=>selectSlide(1)}>Explore</button>
          </div>
-         </main> }
-
-         { destination && <Destination destinations={info.destinations}/>}
-         { crew && <Crew crew={info.crew}/>}
-         { tech && <Technology technology={info.technology}/>}
-
-          {/* {!home && <Details details={info.technology}
-                                            navigateTo={selected()} />}  */}
-
-
+         </main> :
+          destination ? <Destination destinations={info.destinations}/> :
+          crew ? <Crew crew={info.crew}/> :
+           <Technology technology={info.technology}/>}
+           
     </div> 
   );
 }
