@@ -9,7 +9,7 @@ const App=()=>{
 
 const [info,setInfo]=useState(data)
 //display nav element which is true
-const [navigation,setNavigation]=useState([false,false,true,false])
+const [navigation,setNavigation]=useState([true,false,false,false])
 //clicked element will be true 
 const selectSlide=(id)=>{
   setNavigation(pre=>pre.map((x,i)=>id===i ? x=true : x=false))
@@ -52,7 +52,7 @@ const navBar=["home","destinations","crew","technology"]
 const [isNavOpen,setIsNavOpen]=useState(false)
 
   return (
-    <div className="app">
+    <div className={ destination ? 'destination' : crew ? 'crew' : tech ? 'tech' :'app'}>
         <a className="skip-to-content" href="#main">Skip to content</a>
       <header className="primary-header flex">
         
