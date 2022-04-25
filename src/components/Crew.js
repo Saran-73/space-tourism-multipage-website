@@ -16,18 +16,21 @@ const choose=(member)=>{
             
             <h1 className="numbered-title uppercase"><span aria-hidden="true">02</span>
             Meet your crew</h1>
-
+            <picture>
+                <source srcSet={images.webp} type='image/webp'/>
             <img src={images.png} alt={`image of ${name}`} />
-            
+            </picture>
                 <div className="dot-indicators flex dot-tab">
                         {crewData.map((obj,i)=> <button key={i} 
                         onClick={()=>choose(obj.name)} 
                         aria-selected="false"><span className='sr-only'>{obj.name}</span></button>)}
                 </div>
 
-            <article className='crew-info'>
+            <article className='crew-info flow'>
+                <header className='flow'>
              <h2 className="fs-600 uppercase ff-serif">{role}</h2>
              <p className="fs-700 uppercase ff-serif">{name}</p>
+             </header>
              <p>{bio}</p>
             </article>
 

@@ -15,16 +15,20 @@ const choose=(planet)=>{
         <main id="main" className="grid-container  grid-container--destination flow">
           
             <h1 className="numbered-title"><span aria-hidden="true">01</span> pick your destination</h1>
-            <img src={images.png} alt={`the ${name} image`} />
-            
+           
+           <picture>
+               <source srcSet={images.webp} type='image/webp' />
+             <img src={images.png} alt={`the ${name} image`} />
+             </picture>
+
                 <div className="tab-list underline-indicators flex ">
                 {destinations.map((obj,i)=> <button key={i} 
                         onClick={()=>choose(obj.name)}
                         aria-selected="false"
-                        className="uppercase ff-sans-cond text-accent bg-dark letter-spacing-2">{obj.name}</button>)}
+                        className="uppercase ff-sans-cond text-accent letter-spacing-2">{obj.name}</button>)}
                 </div>
 
-          <article className='destination-info'>
+          <article className='destination-info flow'>
              <h2 className="fs-800 uppercase ff-serif">{name}</h2>
              <p>{description}</p>
              <div className="destination-meta flex">

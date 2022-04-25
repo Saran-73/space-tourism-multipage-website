@@ -128,6 +128,7 @@ input,button,textarea,select{
 .flow > *:where(:not(:first-child)) {
   margin-top: var(--flow-space, 1rem);
 }
+
 .container{
   /* setting only right and left side (new css feature instead on padding :0 2em) */
   padding-inline:2em;
@@ -363,11 +364,12 @@ transition:transform 500ms ease-in;
 
 
 .underline-indicators > * {
-  padding: var(--underline-gap, 1rem) 0;
+  padding: var(--underline-gap, .5rem) 0;
   border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
   border-top:0;
   border-right:0;
   border-left:0;
+  background-color:transparent;
 }
 .underline-indicators > *:hover,
 .underline-indicators > *:focus {
@@ -523,7 +525,7 @@ color:hsl( var(--clr-dark));
     'tab-list'
     'content'
 }
-.grid-container--destination>img{
+.grid-container--destination> picture{
   grid-area:img;
   max-width:60%;
 }
@@ -553,7 +555,7 @@ grid-template-areas:
    'nav'
    'content';
 }
-.grid-container--crew>img{
+.grid-container--crew >picture{
   grid-area:img;
   max-width:60%;
   border-bottom:1px solid hsl(var(--clr-white) /.1);
@@ -563,6 +565,12 @@ grid-template-areas:
 }
 .grid-container--crew > .crew-info{
   grid-area:content;
+}
+.crew-info h2{
+  opacity:0.5;
+}
+.crew-info header{
+  --flow-space:.5rem;
 }
 
 @media (min-width:35rem){
@@ -617,7 +625,7 @@ justify-content:space-evenly;
     '. img tab-list .'
     '. img content .';
 } 
-.grid-container--destination>img{
+.grid-container--destination> picture{
   max-width:90%;
 }
 .destination-meta{
