@@ -9,7 +9,7 @@ const App=()=>{
 
 const [info,setInfo]=useState(data)
 //display nav element which is true
-const [navigation,setNavigation]=useState([false,false,false,true])
+const [navigation,setNavigation]=useState([true,false,false,false])
 //clicked element will be true 
 const selectSlide=(id)=>{
   setNavigation(pre=>pre.map((x,i)=>id===i ? x=true : x=false))
