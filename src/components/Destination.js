@@ -11,7 +11,6 @@ const choose=(planet)=>{
       return (planet===y.name) ? {...y,isClicked:true} : {...y,isClicked:false}
         }))
 }
-console.log(newData)
 
     return (
         <main id="main" className="grid-container  grid-container--destination flow">

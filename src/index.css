@@ -567,10 +567,34 @@ grid-template-areas:
 .grid-container--crew > .crew-info{
   grid-area:content;
 }
-.crew-info h2{
+
+.crew-info header{
+  --flow-space:.5rem;
+}
+/* tech layout */
+.grid-container--tech{
+  --flow-space:2rem;
+grid-template-areas:tech
+   'title'
+   'img'
+   'nav'
+   'content';
+}
+.grid-container--tech >picture{
+  grid-area:img;
+  max-width:60%;
+  border-bottom:1px solid hsl(var(--clr-white) /.1);
+}
+.grid-container--tech > .nav-tab{
+  grid-area:nav;
+}
+.grid-container--tech > .tech-info{
+  grid-area:content;
+}
+.tech-info h2{
   opacity:0.5;
 }
-.crew-info header{
+.tech-info header{
   --flow-space:.5rem;
 }
 
