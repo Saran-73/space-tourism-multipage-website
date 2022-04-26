@@ -19,36 +19,6 @@ const [home,destination,crew,tech]=navigation;
 //create an array of nav text
 const navBar=["home","destinations","crew","technology"]
 
-// const selected=()=>{
-//   return  destination ? 'destination' : crew ? 'crew' : tech ? 'tech' :'home'
-// }
-
-//using Direct DOM mainuption to open and close nav in mobile view
-//not a best approach?
-//is this ok to code like this????
- //useEffect(()=>{
-//   const nav = document.querySelector(".primary-navigation");
-//   const btn = document.querySelector(".mobile-nav-btn");
-
-//   const accessNav=() => {
-//     const visiblity = nav.getAttribute("data-visible");
-//     if (visiblity === "false") {
-//         nav.setAttribute("data-visible", true);
-
-//     } else {
-//         nav.setAttribute("data-visible", false);
-//     }
-// }
-//   btn.addEventListener("click", accessNav)
-//   return function(){
-//     btn.removeEventListener("click",accessNav)
-//   }
- //},[])
-
-//open and hide nav using useRef(not a best practise only a final option)
-//React.useRef()
-
-//open and hide nav (proper React method)
 const [isNavOpen,setIsNavOpen]=useState(false)
 
   return (
