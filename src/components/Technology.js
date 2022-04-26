@@ -20,7 +20,7 @@ const choose=(techUsed)=>{
             <img src={images.portrait} alt={`the ${name}`}/>
                 </picture>
 
-            <div className="flex number-indicators nav-tab">
+            <div className=" number-indicators nav-tab fs-500">
                  {crewData.map((obj,i)=> <button key={i}
                         onClick={()=>choose(obj.name)}
                         aria-selected={obj.isClicked}
@@ -28,10 +28,10 @@ const choose=(techUsed)=>{
               </div>          
             <article className='tech-info flow'>
                 <header className='flow'>
-            <h2 className="fs-600 uppercase ff-serif text-accent">The terminology...</h2>
-             <p className="fs-700 uppercase ff-serif">{name}</p>
+            <h2 className="fs-400 uppercase ff-serif text-accent">The terminology...</h2>
+             <p className="fs-600 uppercase ff-serif">{name}</p>
              </header>
-             <p>{description}</p>
+             <p className='text-accent'>{description}</p>
             </article>
 
         </main>
