@@ -11,6 +11,8 @@ const choose=(planet)=>{
       return (planet===y.name) ? {...y,isClicked:true} : {...y,isClicked:false}
         }))
 }
+console.log(newData)
+
     return (
         <main id="main" className="grid-container  grid-container--destination flow">
           
@@ -22,12 +24,11 @@ const choose=(planet)=>{
              </picture>
 
                 <div className="tab-list underline-indicators flex ">
-                {destinations.map((obj,i)=> <button key={i} 
+                {destData.map((obj,i)=> <button key={i} 
                         onClick={()=>choose(obj.name)}
-                        aria-selected="false"
+                        aria-selected={obj.isClicked}
                         className="uppercase ff-sans-cond text-accent letter-spacing-2">{obj.name}</button>)}
                 </div>
-
           <article className='destination-info flow'>
              <h2 className="fs-800 uppercase ff-serif">{name}</h2>
              <p>{description}</p>

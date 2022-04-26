@@ -23,7 +23,7 @@ const choose=(member)=>{
                 <div className="dot-indicators flex dot-tab">
                         {crewData.map((obj,i)=> <button key={i} 
                         onClick={()=>choose(obj.name)} 
-                        aria-selected="false"><span className='sr-only'>{obj.name}</span></button>)}
+                        aria-selected={obj.isClicked}><span className='sr-only'>{obj.name}</span></button>)}
                 </div>
 
             <article className='crew-info flow'>

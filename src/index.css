@@ -528,6 +528,7 @@ color:hsl( var(--clr-dark));
 .grid-container--destination> picture{
   grid-area:img;
   max-width:60%;
+  align-self: start;
 }
 .grid-container--destination > .tab-list{
   grid-area:tab-list;
@@ -634,6 +635,7 @@ justify-content:space-evenly;
     }
 
     .grid-container--crew{
+      grid-template-columns: minmax(1rem, 1fr) minmax(0, 37rem) minmax(0, 23rem) minmax(1rem, 1fr);
       justify-items: start;
       --flow-space:2rem;
     grid-template-areas: 
@@ -641,8 +643,10 @@ justify-content:space-evenly;
        '. content img .'
        '. nav img .';
     }
-    .grid-container--crew>img{
+    .grid-container--crew > picture{
       max-width:90%;
+      align-self:end;
+      grid-column:span 2;
     }
 }
 
