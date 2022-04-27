@@ -27,7 +27,7 @@ const [isNavOpen,setIsNavOpen]=useState(false)
       <header className="primary-header flex">
         
         <div>
-        <img src="../assets/shared/logo.svg" alt="space tourism logo" className="logo"/>
+        <img src="./assets/shared/logo.svg" alt="space tourism logo" className="logo"/>
         </div>
         
         <button className="mobile-nav-btn"
