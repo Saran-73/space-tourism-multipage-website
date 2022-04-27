@@ -3,7 +3,7 @@ import data from "./data.json"
 import Destination from "./components/Destination.js"
 import Crew from "./components/Crew.js"
 import Technology from "./components/Technology.js"
-
+import logo from "./shared/logo.svg"
 
 const App=()=>{
 
@@ -27,7 +27,7 @@ const [isNavOpen,setIsNavOpen]=useState(false)
       <header className="primary-header flex">
         
         <div>
-        <img src="./assets/shared/logo.svg" alt="logo" className="logo"/>
+        <img src={logo} alt="the logo" className="logo"/>
         </div>
         
         <button className="mobile-nav-btn"
